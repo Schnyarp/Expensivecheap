@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>expensive.cheap — Premium Domain For Sale</title>
+  <meta name="description" content="expensive.cheap — memorable, brandable domain for playful retail brands, marketing campaigns, bargain luxury concepts, satire projects, or price-comparison and deal sites. Submit an offer to purchase." />
+  <meta property="og:title" content="expensive.cheap — Premium Domain For Sale" />
+  <meta property="og:description" content="expensive.cheap — a striking domain for brands that pair luxury and value: curated discounts, bargain-luxe boutiques, satirical media, or marketing stunts. Contact domain@expensive.cheap" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#1b1b1f" />
+  <link rel="icon" href="/favicon.ico" />
+
+  <style>
+    :root{
+      --max-width:1100px;
+      --panel:#ffffff;
+      --muted:#9aa2a8;
+      --accent-warm:#ffb84d; /* bargain gold */
+      --accent-luxe:#c9a1ff; /* luxury lilac */
+      --text-dark:#0a1720;
+      --bg-dark:#0f0f13;
+      --bg-deep:#1b1b22;
+      --radius:14px;
+      --shadow: rgba(2,8,12,0.35);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      min-height:100vh;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      padding:36px 20px;
+      color:var(--panel);
+      background:
+        radial-gradient(900px 360px at 14% 12%, rgba(201,161,255,0.03), transparent 12%),
+        linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-deep) 100%);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      overflow-x:hidden;
+    }
+
+    /* Background motif:
+       - left: subtle marble/velvet texture (luxury)
+       - right: bright sticker/tag motif (cheap/bargain)
+       - animated price tags floating across
+    */
+    .marble {
+      position:fixed;
+      left:0;
+      top:0;
+      bottom:0;
+      width:56%;
+      z-index:0;
+      pointer-events:none;
+      background-image:
+        radial-gradient(circle at 20% 10%, rgba(201,161,255,0.02), transparent 8%),
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='800' viewBox='0 0 800 800'><defs><linearGradient id='g' x1='0' x2='1'><stop offset='0' stop-color='%23ffffff' stop-opacity='0.03'/><stop offset='1' stop-color='%23ccccff' stop-opacity='0.02'/></linearGradient></defs><rect width='800' height='800' fill='url(%23g)'/></svg>");
+      background-size:cover;
+      opacity:0.35;
+      mix-blend-mode:soft-light;
+      transform:translateZ(0);
+    }
+
+    .tags-field {
+      position:fixed;
+      right:0;
+      top:0;
+      bottom:0;
+      width:42%;
+      z-index:0;
+      pointer-events:none;
+      background:
+        linear-gradient(90deg, rgba(255,184,77,0.03), rgba(201,161,255,0.02));
+      display:block;
+    }
+
+    .confetti {
+      position:fixed;
+      inset:0;
+      z-index:0;
+      pointer-events:none;
+      opacity:0.12;
+      background-image:
+        radial-gradient(circle, rgba(255,184,77,0.08) 1px, transparent 1px),
+        radial-gradient(circle, rgba(201,161,255,0.06) 1px, transparent 1px);
+      background-size: 28px 28px, 48px 48px;
+      mix-blend-mode:screen;
+    }
+
+    .tag-layer {
+      position:fixed;
+      inset:0;
+      z-index:0;
+      pointer-events:none;
+      overflow:visible;
+    }
+
+    .price-tag {
+      position:absolute;
+      min-width:56px;
+      height:28px;
+      padding:0 8px;
+      border-radius:999px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+      font-size:12px;
+      color:#07121a;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.28);
+      transform-origin:center;
+    }
+
+    .price-tag.cheap {
+      background: linear-gradient(90deg,var(--accent-warm),#ffd98a);
+    }
+    .price-tag.luxe {
+      background: linear-gradient(90deg,var(--accent-luxe),#e9d0ff);
+    }
+
+    .container{
+      width:100%;
+      max-width:var(--max-width);
+      padding:34px;
+      border-radius:18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      box-shadow: 0 30px 90px var(--shadow);
+      border: 1px solid rgba(255,255,255,0.03);
+      position:relative;
+      z-index:2;
+    }
+
+    header{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:20px;
+    }
+
+    .brand{ display:flex; gap:14px; align-items:center; }
+    .logo{
+      width:86px;
+      height:86px;
+      border-radius:18px;
+      background: linear-gradient(135deg,var(--accent-luxe),var(--accent-warm));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#07121a;
+      font-weight:900;
+      font-size:22px;
+      box-shadow: 0 12px 36px rgba(0,0,0,0.2);
+      flex-shrink:0;
+    }
+
+    h1{ margin:0; font-size:28px; color:var(--panel); letter-spacing:0.2px; }
+    p.lead{ margin:6px 0 0; color:var(--muted); font-size:14px; max-width:720px; }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 360px;
+      gap:28px;
+      align-items:start;
+    }
+
+    .hero {
+      background: linear-gradient(90deg, rgba(201,161,255,0.03), rgba(255,184,77,0.02));
+      padding:16px 18px;
+      border-radius:12px;
+      color:var(--panel);
+      margin-bottom:16px;
+      border:1px solid rgba(255,255,255,0.02);
+    }
+    .hero p{ margin:0; font-size:15px; color:var(--panel); }
+
+    .panel {
+      background: var(--panel);
+      color:var(--text-dark);
+      padding:22px;
+      border-radius:14px;
+      box-shadow: 0 10px 34px rgba(2,8,12,0.06);
+      border: 1px solid rgba(2,8,12,0.03);
+      max-width:820px;
+    }
+
+    h2{ margin-top:0; font-size:20px; color:var(--text-dark); }
+    .features ul{ margin:0; padding-left:18px; color:var(--muted); }
+    .features li{ margin-bottom:10px; }
+
+    .cta-row{ display:flex; gap:12px; margin-top:18px; flex-wrap:wrap; align-items:center; }
+    .btn{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      padding:10px 16px;
+      border-radius:999px;
+      font-weight:700;
+      cursor:pointer;
+      text-decoration:none;
+      border:0;
+    }
+    .btn-primary{
+      background: linear-gradient(90deg,var(--accent-warm),var(--accent-luxe));
+      color:#07121a;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    }
+    .btn-ghost{
+      background:transparent;
+      border:1px solid rgba(2,8,12,0.06);
+      color:var(--muted);
+    }
+
+    .price { margin-top:12px; font-weight:700; color:var(--text-dark); font-size:16px; }
+    .muted-small { color:var(--muted); font-size:13px; margin-top:6px; }
+
+    .contact-card{
+      position:sticky;
+      top:32px;
+      align-self:start;
+      background: linear-gradient(180deg, rgba(255,255,255,0.995), rgba(255,255,255,0.98));
+      padding:18px;
+      border-radius:12px;
+      border:1px solid rgba(2,8,12,0.03);
+      box-shadow: 0 8px 26px rgba(2,8,12,0.035);
+      max-width:360px;
+    }
+
+    .contact-card h3{ margin:0 0 8px 0; font-size:16px; color:var(--text-dark); }
+    .contact-email, .contact-email a{
+      white-space:nowrap;
+      display:inline-block;
+      font-weight:700;
+      color:var(--accent-luxe);
+      word-break: normal;
+      font-size:0.98rem;
+      text-decoration:none;
+    }
+
+    form label{ display:block; font-size:13px; color:var(--muted); margin-bottom:6px; }
+    form input, form textarea {
+      width:100%;
+      padding:10px 12px;
+      border-radius:10px;
+      border:1px solid rgba(2,8,12,0.06);
+      background:#fff;
+      color:var(--text-dark);
+      font-size:14px;
+      margin-bottom:12px;
+    }
+    form textarea{ min-height:110px; resize:vertical; }
+
+    footer{ margin-top:18px; color:var(--muted); font-size:13px; text-align:center; }
+
+    @media (max-width:980px){
+      .grid{ grid-template-columns: 1fr; gap:18px; }
+      .contact-card{ position:relative; top:auto; width:100%; max-width:none; }
+      .container{ padding:22px; }
+      .logo{ width:72px; height:72px; border-radius:14px; }
+      h1{ font-size:22px; }
+      .marble, .tags-field, .confetti { display:none; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@graph":[
+      {
+        "@type":"WebSite",
+        "url":"https://expensive.cheap",
+        "name":"expensive.cheap",
+        "description":"expensive.cheap — a memorable domain for playful retail brands, bargain-luxe boutiques, price-comparison campaigns, or creative marketing projects."
+      },
+      {
+        "@type":"ContactPoint",
+        "contactType":"sales",
+        "email":"domain@expensive.cheap"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div class="marble" aria-hidden="true"></div>
+  <div class="tags-field" aria-hidden="true"></div>
+  <div class="confetti" aria-hidden="true"></div>
+  <div class="tag-layer" id="tagLayer" aria-hidden="true"></div>
+
+  <main class="container" role="main" aria-labelledby="main-heading">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true">E.C</div>
+        <div>
+          <h1 id="main-heading">expensive.cheap</h1>
+          <p class="lead">Premium, playful domain — great for brands or campaigns that pair luxury and bargains: curated discount boutiques, satire, price comparison, or creative marketing projects.</p>
+        </div>
+      </div>
+
+      <div style="text-align:right">
+        <div style="color:var(--muted);font-size:13px">For inquiries</div>
+        <div class="contact-email"><a href="mailto:domain@expensive.cheap">domain@expensive.cheap</a></div>
+      </div>
+    </header>
+
+    <div class="hero" role="note" aria-live="polite">
+      <p>Expensive.Cheap is a striking name built to capture attention — ideal for businesses that want to play with contrast (luxury + deals), run bold marketing stunts, or build an instantly memorable shopping brand.</p>
+    </div>
+
+    <section class="grid" aria-label="Main content">
+      <div>
+        <article class="panel" aria-labelledby="why-title">
+          <h2 id="why-title">Why expensive.cheap?</h2>
+          <p class="lead">A short, paradox-driven .cheap domain that is both memorable and brandable. Works for bargain-luxe retail, editorial campaigns, price discovery, social-first commerce, or playful editorial projects.</p>
+
+          <div class="features" style="margin-top:12px">
+            <ul>
+              <li>Highly memorable — the domain itself is a hook for marketing and PR</li>
+              <li>Flexible — suits ecommerce, satirical media, social campaigns, and price-comparison tools</li>
+              <li>Brandable across packaging, ads, apps and social channels</li>
+            </ul>
+          </div>
+
+          <div class="cta-row" role="group" aria-label="Actions">
+            <a class="btn btn-primary" href="#" id="inquireBtn">Make an Offer</a>
+            <a class="btn btn-ghost" href="mailto:domain@expensive.cheap?subject=Domain%20Offer%20-%20expensive.cheap">Email Now</a>
+          </div>
+
+          <div class="price">Domain: expensive.cheap</div>
+          <div class="muted-small">Serious offers only. Transfer via escrow recommended for secure and trusted transactions.</div>
+        </article>
+
+        <article class="panel" style="margin-top:18px" aria-labelledby="about-title">
+          <h3 id="about-title" style="margin-top:0">About this domain</h3>
+          <p class="lead">Expensive.Cheap is an attention-getting asset for founders, marketers, and creators. It excels where contrast creates curiosity — boutique deals, "luxury for less" concepts, satire, or campaign landing pages.</p>
+
+          <ul style="color:var(--muted);margin-top:12px">
+            <li>Great for curated discount boutiques, bargain-luxe concepts and price comparison tools</li>
+            <li>Useful for editorial campaigns, meme or satire projects, social-first commerce and marketing stunts</li>
+            <li>Transfer-ready — escrow recommended to ensure a secure and verifiable transaction</li>
+          </ul>
+        </article>
+      </div>
+
+      <aside class="contact-card" aria-label="Contact & offer">
+        <div>
+          <h3 style="margin-top:0">Contact & Offer</h3>
+          <p style="margin-top:6px;color:var(--muted)">Submit an offer — this form opens your email client with the details prefilled. Or email <a href="mailto:domain@expensive.cheap" class="contact-email">domain@expensive.cheap</a>.</p>
+
+          <form id="inquiryForm" onsubmit="handleSubmit(event)" aria-label="Domain offer form">
+            <label for="name">Your name</label>
+            <input id="name" name="name" type="text" placeholder="Jane Doe" required />
+
+            <label for="email">Your email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required />
+
+            <label for="offer">Your offer (USD)</label>
+            <input id="offer" name="offer" type="text" placeholder="Enter your offer (USD)" required />
+
+            <label for="company">Company (optional)</label>
+            <input id="company" name="company" type="text" placeholder="Your company or organization" />
+
+            <label for="country">Country</label>
+            <input id="country" name="country" type="text" placeholder="Your country" required />
+
+            <label for="phone">Phone number (optional)</label>
+            <input id="phone" name="phone" type="tel" />
+
+            <label for="message">Message (questions, timeline, escrow preference)</label>
+            <textarea id="message" name="message" placeholder="Hi — I'm submitting an offer for expensive.cheap. Please share transfer instructions and next steps."></textarea>
+
+            <button class="btn btn-primary" type="submit" style="width:100%; margin-top:6px">Send Offer</button>
+          </form>
+
+          <footer style="margin-top:10px; text-align:left; color:var(--muted); font-size:13px">
+            Prefer direct email? <a href="mailto:domain@expensive.cheap" style="color:var(--accent-luxe)" class="contact-email">domain@expensive.cheap</a>
+          </footer>
+        </div>
+      </aside>
+    </section>
+
+    <footer>
+      &copy; 2025 expensive.cheap. All rights reserved.
+    </footer>
+  </main>
+
+  <script>
+    // Place floating price tags (a mix of 'CHEAP' and 'EXPENSIVE' badges) to add motion.
+    (function createTags(){
+      const layer = document.getElementById('tagLayer');
+      if(!layer) return;
+      const labels = [
+        {text:'$9.99', style:'cheap'},
+        {text:'LIMITED', style:'luxe'},
+        {text:'$0.99', style:'cheap'},
+        {text:'PREMIUM', style:'luxe'},
+        {text:'SALE', style:'cheap'},
+        {text:'EXCLUSIVE', style:'luxe'}
+      ];
+      for(let i=0;i<labels.length;i++){
+        const t = document.createElement('div');
+        t.className = 'price-tag ' + labels[i].style;
+        t.textContent = labels[i].text;
+        t.style.left = (6 + Math.random()*88) + 'vw';
+        t.style.top = (6 + Math.random()*84) + 'vh';
+        t.style.transform = `rotate(${(Math.random()-0.5)*30}deg)`;
+        t.style.opacity = 0.7 + Math.random()*0.25;
+        layer.appendChild(t);
+
+        // animate drifting
+        (function(el){
+          const dur = 6000 + Math.random()*9000;
+          function step(){
+            const tx = (Math.random()-0.5) * 18;
+            const ty = (Math.random()-0.5) * 20;
+            const rot = (Math.random()-0.5) * 40;
+            el.style.transition = `transform ${dur}ms ease-in-out, opacity ${dur}ms linear`;
+            el.style.transform = `translate(${tx}px, ${ty}px) rotate(${rot}deg)`;
+            el.style.opacity = 0.5 + Math.random()*0.4;
+            setTimeout(step, dur + Math.random()*800);
+          }
+          setTimeout(step, Math.random()*1000);
+        })(t);
+      }
+    })();
+
+    // Compose mailto URL and open user's email client
+    function handleSubmit(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const offer = document.getElementById('offer').value.trim();
+      const company = document.getElementById('company').value.trim();
+      const country = document.getElementById('country').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      const subject = encodeURIComponent('Domain Offer - expensive.cheap');
+      const bodyText =
+        `Name: ${name}\n` +
+        `Email: ${email}\n` +
+        `Company: ${company || '(not provided)'}\n` +
+        `Offer (USD): ${offer}\n` +
+        `Country: ${country}\n` +
+        `Phone: ${phone || '(not provided)'}\n\n` +
+        `Message:\n${message}\n\n---\nSent from expensive.cheap offer form`;
+
+      const body = encodeURIComponent(bodyText);
+      const mailto = `mailto:domain@expensive.cheap?subject=${subject}&body=${body}`;
+      window.location.href = mailto;
+    }
+
+    document.getElementById('inquireBtn').addEventListener('click', function(e){
+      e.preventDefault();
+      const form = document.getElementById('inquiryForm');
+      if(window.innerWidth < 900){
+        form.scrollIntoView({behavior:'smooth', block:'center'});
+        form.querySelector('input').focus();
+      } else {
+        const subject = encodeURIComponent('Domain Offer - expensive.cheap');
+        const body = encodeURIComponent('Hi — I would like to make an offer for expensive.cheap. Please reply with transfer instructions and next steps.');
+        window.location.href = `mailto:domain@expensive.cheap?subject=${subject}&body=${body}`;
+      }
+    });
+  </script>
+</body>
+</html>
